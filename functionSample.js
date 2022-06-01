@@ -1,8 +1,5 @@
-function hello()
-{
+module.exports.hello=function () {
     console.log('Hello Im called')
-    return true
 }
 
-var s=hello()
-console.log(s)
+
