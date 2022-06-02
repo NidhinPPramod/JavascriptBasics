@@ -4,7 +4,8 @@ var url=require('url')
 
 http.createServer((req,res)=>
 {
-    var q=url.parse(req.url) //to parse the url path only..avoid the unnecessary symbols after required path
+    var q=url.parse(req.url,true) //to parse the url path only..avoid the unnecessary symbols after required path
+                               // true used to collect data as objects
 
     if(q.pathname==='/') {
             res.write('Hy Hello')
@@ -20,7 +21,9 @@ http.createServer((req,res)=>
     }
     else if(q.pathname==='/signupaction')
     {
-        res.write('Action')
+
+        res.writeHead(200,{'Content-Type':'text/html'})
+        res.write('<h1>'+q.query.firstname+'</h1>')
         res.end()
     }
     else
